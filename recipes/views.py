@@ -13,8 +13,8 @@ def home(request):
     recipes = Recipe.objects.filter(
         is_published=True,
         ).order_by('-id')
-    
-    messages.success(request, 'Epa, você foi pesquisar algo que eu vi.')
+
+    messages.error(request, 'Epa, você foi pesquisar algo que eu vi.')
 
     page_obj, pagination_range = make_pagination(request, recipes, PER_PAGE)
 
@@ -70,3 +70,4 @@ def search(request):
         'pagination_range': pagination_range,
         'additional_url_query': f'&q={search_term}',
     })
+
